@@ -3,8 +3,7 @@
 /**
  * Module dependencies.
  */
-var _ = require('lodash'),
-	glob = require('glob');
+var _ = require('lodash');
 
 /**
  * Load app configurations
