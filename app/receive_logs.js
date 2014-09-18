@@ -5,12 +5,12 @@ var amqp = require('amqplib');
 amqp.connect('amqp://localhost').then(function(conn) {
   process.once('SIGINT', function() { conn.close(); });
   return conn.createChannel().then(function(ch) {
-    var ok = ch.assertExchange('test_exchange', 'fanout', {durable: true });
+    var ok = ch.assertExchange('log_collector', 'fanout', {durable: true });
     ok = ok.then(function() {
       return ch.assertQueue('', {exclusive: true});
     });
     ok = ok.then(function(qok) {
-      return ch.bindQueue(qok.queue, 'test_exchange', '').then(function() {
+      return ch.bindQueue(qok.queue, 'log_collector', '').then(function() {
         return qok.queue;
       });
     });
