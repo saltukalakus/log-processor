@@ -3,16 +3,13 @@
 var amqp = require('amqplib');
 var when = require('when');
 
-function msg(exchange, message)
+function msg(q, msg)
 {
     amqp.connect('amqp://localhost').then(function(conn) {
         return when(conn.createChannel().then(function(ch) {
+            ch.sendToQueue(q, new Buffer(msg));
+            return ch.close();
 
-            var ok = ch.assertExchange(exchange, 'fanout', {durable: false});
-            return ok.then(function() {
-                ch.publish(exchange, '', new Buffer(message));
-                return ch.close();
-            });
         })).ensure(function() { conn.close(); });
     }).then(null, console.warn);
 }

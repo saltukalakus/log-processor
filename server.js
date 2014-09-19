@@ -11,13 +11,11 @@ var send = require('./app/rabbitmq/send');
  * Main application entry file.
  */
 function logMessage(msg) {
-    console.log(" [x] '%s'", msg.content.toString());
+    //console.log(" [x] '%s'", msg.content.toString());
+    send.msg(config.send_queue_name, msg.content.toString().toUpperCase());
 }
 
 receive.openChannel(config.host, config.rcv_exchange_type, config.rcv_exchange, logMessage);
 
 // Logging initialization
-
-send.msg(config.send_exchange, "Send out a msg");
-
 console.log('Log processor started.');
