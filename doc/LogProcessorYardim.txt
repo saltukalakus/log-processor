@@ -14,7 +14,7 @@ git clone https://github.com/BATYD-Turksat/cache-log-processor
 cd ./cache-log-processor
 npm install
 
-# 5- Mail için şifrenin kalcı olarak enviroment a kaydedilmesi gerekli. Geçici için alttaki satır uygun.
+# 5- Mail için şifrenin kalıcı olarak enviroment a kaydedilmesi gerekli. Geçici için alttaki satır uygun.
 export CLP_MAIL_PASS=xxxxxxxxxx
 
 # 6- /cache-log-processor/config/env/all.js içindeki konfigurasyonun yapılması. Önemlileri alttaki gibi;
@@ -27,7 +27,7 @@ mail_send_to ==> İlgili kişilerin mail listesine eklenmesi.
 
 rabbitmq_host ==> RabbitMQ farklı bir makinada yada portta ise production.js içinden düzeltilmesi.
 
-# 7- Production.js configürasyonunun aktif olması için kalcı olarak enviroment a kaydedilmesi gerekli. Geçici için alttaki satır uygun.
+# 7- Production.js configürasyonunun aktif olması için kalıcı olarak enviroment a kaydedilmesi gerekli. Geçici için alttaki satır uygun.
 export NODE_ENV=production
 
 # 8- Sistemi çalıştırmak için:
