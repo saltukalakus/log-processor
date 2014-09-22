@@ -11,10 +11,14 @@ module.exports = {
     //Mail settings
     mail_bot: 'turksatlogbot@gmail.com',
     mail_bot_pass: process.env.CLP_MAIL_PASS,
-    mail_subject: 'ATS\'de enteresan bir durum oluştu.',
+    mail_subject: 'ATS\'de bir sorun oluştu.',
     mail_text: 'Lütfen ekteki log dosyasını inceleyin.',
     mail_html: '<b>Lütfen ekteki log dosyasını inceleyin.</b>',
-    mail_attachment_path: './',
-    mail_attachment: 'logs.txt',
-    send_mail_to: ['saltukalakus@gmail.com', 'ralakus@turksat.com.tr']
+    mail_attachment: 'log.txt',
+    mail_queue_wait: 60, //Number of seconds logs are queued before sending mails.
+    send_mail_to: ['saltukalakus@gmail.com', 'ralakus@turksat.com.tr'],
+
+    //Log Processor behavioral settings
+    can_send_mail: true,
+    can_push_data_to_elastic: true
 };

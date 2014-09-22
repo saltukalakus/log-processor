@@ -15,10 +15,13 @@ var mail = require('./app/mail/send');
 function logMessage(msg) {
     //console.log(" [x] '%s'", msg.content.toString());
     if (filter.has(msg.content.toString())) {
-        send.msg(config.send_queue_name, msg.content);
+        if (config.can_send_mail){
+            mail.send(msg.content.toString());
+        }
+        if (config.can_push_data_to_elastic){
+            send.msg(config.send_queue_name, msg.content);
+        }
     }
 }
-
-mail.send();
 
 receive.openChannel(config.host, config.rcv_exchange_type, config.rcv_exchange, logMessage);
