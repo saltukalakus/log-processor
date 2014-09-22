@@ -1,0 +1,43 @@
+Log Processor Kurulum
+==================================
+
+# 1- NodeJs kurulumu
+sudo apt-get install nodejs
+
+# 2- NodeJs paket yönetim sistemi kurulumu
+sudo apt-get install npm
+
+# 3- Projenin Git'ten indirilmesi.
+git clone https://github.com/BATYD-Turksat/cache-log-processor
+
+# 4- Proje kütüphalerinin kurulumu.
+cd ./cache-log-processor
+npm install
+
+# 5- Mail için şifrenin enviroment a kaydedilmesi gerekli. Geçici için alttaki satır uygun.
+export CLP_MAIL_PASS=xxxxxxxxxx
+
+# 6- /cache-log-processor/config/env/all.js içindeki konfigurasyonun yapılması. Önemlileri alttaki gibi;
+
+key_words ==> Filtrelenecek kelimeleri array içine girilebilir. Tek kelime için büyük, küçük ayrı girilmesine gerek olmuyor. Bir kelimenin hepsinin yazılması da gerekli değil bulunması için.
+
+can_push_data_to_elastic ==> Eğer filte sonuçları Kibana'da kullanılmayacak ise false 'a çekilebilir.
+ 
+mail_send_to ==> İlgili kişilerin mail listesine eklenmesi.
+
+# 7- Sistemi çalıştırmak için:
+node server.js
+
+
+RabbitMq - Elasticsearch ayarları.
+==================================
+
+Loglar RabbitMq ile Elasticsearch e gönderilirken LogProcessor tarafından da alınması gerekli. Bunun için RabbitMq'nın "FANOUT" modda exchange oluşturması gerekiyor. Oluşturulan exchange isminin de LogProcessor'un conf dosyalarındaki isim ile aynı olması lazım. Bu ayar LogProcessor'da rcv_exchange : 'log_collector' olarak görülebilir.
+
+Örnek logstash conf dosyaları alttaki dizinde mevcuttur:
+https://github.com/BATYD-Turksat/cache-logstash/tree/master/conf/logprocessor
+
+TL;DR: Logstash conf dosyalarında log_collector ismi ile exchange oluşturulmalı ve exchange tipi "FANOUT" olmalı.
+
+
+
