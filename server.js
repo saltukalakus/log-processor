@@ -24,4 +24,4 @@ function logMessage(msg) {
 /**
  * Main application entry file.
  */
-receive.openChannel(config.host, config.rcv_exchange_type, config.rcv_exchange, logMessage);
+receive.openChannel(config.rabbitmq_host, config.rcv_exchange_type, config.rcv_exchange, logMessage);

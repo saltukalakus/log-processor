@@ -1,11 +1,10 @@
-#!/usr/bin/env node
-
 var amqp = require('amqplib');
 var when = require('when');
+var config = require('../../config/config');
 
 function msg(q, msg)
 {
-    amqp.connect('amqp://localhost').then(function(conn) {
+    amqp.connect('amqp://' + config.rabbitmq_host).then(function(conn) {
         return when(conn.createChannel().then(function(ch) {
             ch.sendToQueue(q, new Buffer(msg));
             return ch.close();

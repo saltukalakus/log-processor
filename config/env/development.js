@@ -2,5 +2,5 @@
 
 module.exports = {
     rcv_exchange : 'log_collector',
-    host : 'localhost'
+    rabbitmq_host : 'localhost:5672'
 };

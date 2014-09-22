@@ -14,7 +14,7 @@ git clone https://github.com/BATYD-Turksat/cache-log-processor
 cd ./cache-log-processor
 npm install
 
-# 5- Mail için şifrenin enviroment a kaydedilmesi gerekli. Geçici için alttaki satır uygun.
+# 5- Mail için şifrenin kalcı olarak enviroment a kaydedilmesi gerekli. Geçici için alttaki satır uygun.
 export CLP_MAIL_PASS=xxxxxxxxxx
 
 # 6- /cache-log-processor/config/env/all.js içindeki konfigurasyonun yapılması. Önemlileri alttaki gibi;
@@ -25,11 +25,16 @@ can_push_data_to_elastic ==> Eğer filte sonuçları Kibana'da kullanılmayacak 
  
 mail_send_to ==> İlgili kişilerin mail listesine eklenmesi.
 
-# 7- Sistemi çalıştırmak için:
+rabbitmq_host ==> RabbitMQ farklı bir makinada yada portta ise production.js içinden düzeltilmesi.
+
+# 7- Production.js configürasyonunun aktif olması için kalcı olarak enviroment a kaydedilmesi gerekli. Geçici için alttaki satır uygun.
+export NODE_ENV=production
+
+# 8- Sistemi çalıştırmak için:
 node server.js
 
 
-RabbitMq - Elasticsearch ayarları.
+RabbitMQ - Elasticsearch ayarları.
 ==================================
 
 Loglar RabbitMq ile Elasticsearch e gönderilirken LogProcessor tarafından da alınması gerekli. Bunun için RabbitMq'nın "FANOUT" modda exchange oluşturması gerekiyor. Oluşturulan exchange isminin de LogProcessor'un conf dosyalarındaki isim ile aynı olması lazım. Bu ayar LogProcessor'da rcv_exchange : 'log_collector' olarak görülebilir.

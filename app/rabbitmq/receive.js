@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 var amqp = require('amqplib');
 
 function openChannel(host, exchange_type, exchange, cb)
