@@ -25,7 +25,9 @@
     "amqplib": "~0.2.1",
     "when": "~3.4.6",
     "lodash": "~2.4.1",
-    "glob": "~4.0.6"
+    "glob": "~4.0.6",
+    "nodemailer": "~0.7.1",
+    "fs": "0.0.2"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
