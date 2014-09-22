@@ -29,7 +29,7 @@ function send(){
 
     var mail = {
         from: "Turksat Log Bot <from@gmail.com>",
-        to: config.send_mail_to,
+        to: config.mail_send_to,
         subject: config.mail_subject,
         text: config.mail_text,
         html: config.mail_html,

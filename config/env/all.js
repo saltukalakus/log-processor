@@ -16,7 +16,7 @@ module.exports = {
     mail_html: '<b>Lütfen ekteki log dosyasını inceleyin.</b>',
     mail_attachment: 'log.txt',
     mail_queue_wait: 60, //Number of seconds logs are queued before sending mails.
-    send_mail_to: ['saltukalakus@gmail.com', 'ralakus@turksat.com.tr'],
+    mail_send_to: ['saltukalakus@gmail.com', 'ralakus@turksat.com.tr'],
 
     //Log Processor behavioral settings
     can_send_mail: true,
